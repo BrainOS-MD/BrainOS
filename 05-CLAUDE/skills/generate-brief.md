@@ -8,6 +8,26 @@ Takes a connection note or a topic and produces a fully structured content brief
 
 ## Process
 
+### Step 0: Auto-research
+
+Before building the brief, run one round of `auto-research` scoped to the brief's topic.
+
+Extract the topic from: the connection note title, the capture slug, or Nick's trigger phrase.
+
+Run 2 targeted searches:
+1. `[topic] recent evidence OR data OR case study [year]` — find external proof that strengthens or challenges the One Thing
+2. `[topic] counter-argument OR criticism OR failed attempt` — find the strongest objection to pre-empt
+
+Inject findings directly into the brief:
+- Strong external evidence → add to **PROOF** section alongside vault evidence
+- Counter-argument → add to **Research Gaps** as a pre-emption note
+
+If searches return nothing useful: log "Auto-research: no new external evidence found" and proceed with vault sources only.
+
+Do not save a separate research file — the findings get embedded in the brief itself.
+
+---
+
 ### Step 1: Find the source
 
 If Nick names a connection: find it in `02-CONNECTIONS/`. Read it fully plus all linked source notes.

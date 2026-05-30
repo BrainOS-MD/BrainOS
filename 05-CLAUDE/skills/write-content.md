@@ -8,6 +8,46 @@ Takes an approved brief from `03-BRIEFS/` and produces finished copy for each pl
 
 ## Process
 
+### Step 0: Platform selection
+
+Before writing anything, ask Nick which platform(s) to write for.
+
+**Calculate source word count** — total words across: the brief file + all linked connection notes + all linked captures.
+
+If source word count **> 400 words**: present all 5 platforms as options (longer-form platforms are viable):
+```
+Which platform(s) for "[Brief Title]"?
+Source material: ~[N] words — all formats viable.
+
+  1. X thread
+  2. LinkedIn Personal
+  3. Substack
+  4. LinkedIn Company (compliance review required)
+  5. Company Blog
+  6. All of the above
+
+Reply with numbers (e.g. "1, 2" or "6"):
+```
+
+If source word count **≤ 400 words**: recommend the short-form defaults, but let Nick override:
+```
+Which platform(s) for "[Brief Title]"?
+Source material: ~[N] words — short-form recommended.
+
+  1. X thread ← recommended
+  2. LinkedIn Personal ← recommended
+  3. Substack (thin for this length — will need expansion)
+  4. LinkedIn Company (compliance review required)
+  5. Company Blog (thin for this length — will need expansion)
+  6. All of the above
+
+Reply with numbers or press Enter for 1+2:
+```
+
+Only write drafts for the selected platform(s). Skip the rest.
+
+---
+
 ### Step 1: Load the brief + source notes
 
 Find the brief in `03-BRIEFS/`. Read it fully.

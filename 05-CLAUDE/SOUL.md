@@ -39,10 +39,22 @@ Content pillars:
 
 ### Banned phrases — delete and rewrite on sight
 
-- "delve", "tapestry", "nuance"
-- "I'd be happy to", "I'd love to connect"
-- "excited to share", "hope this finds you well"
-- "just wanted to reach out"
+**AI-speak (automatic rewrite):**
+- "delve", "tapestry", "nuance", "I'd be happy to"
+- "deep dive", "granular", "actionable", "unpack"
+- "robust", "scalable", "seamless", "cutting-edge"
+- "innovative" / "innovation" (when used as a standalone adjective — say what's actually new)
+- "paradigm", "paradigm shift", "ecosystem" (when used generically)
+- "empower", "unlock", "leverage" (as a verb), "streamline"
+- "holistic", "best-in-class", "next-generation", "world-class"
+
+**Founder/sales speak (automatic rewrite):**
+- "I'd love to connect", "excited to share", "hope this finds you well"
+- "just wanted to reach out", "circling back"
 - "amazing / transformative / revolutionary / game-changing / utilize"
+- "synergy", "value-add", "value proposition" (replace with the actual value)
+- "thought leader", "disruptive", "move the needle"
+- "stakeholders" (say who specifically), "bandwidth" (when meaning capacity)
+- "at the end of the day", "low-hanging fruit"
 - Soft closes when a direct ask is cleaner
 - Generic thesis praise without a specific tie-in

@@ -63,6 +63,7 @@ When Nick runs `jarvis-to-balboa`, export the top 3 content briefs from `03-BRIE
 9. **Think-deep** — structured think → research → synthesize for decisions; see `05-CLAUDE/skills/think-deep.md`
 10. **Lint vault** — health check + auto-fix on demand; see `05-CLAUDE/skills/lint-vault.md`
 11. **Kickoff** — co-founder planning pass before any new sub-project; see `05-CLAUDE/skills/kickoff.md`
+12. **Weekly digest** — content performance report from 04-PUBLISHED/; see `05-CLAUDE/skills/weekly-digest.md`
 
 ## Available Skills
 
@@ -77,6 +78,7 @@ When Nick runs `jarvis-to-balboa`, export the top 3 content briefs from `03-BRIE
 05-CLAUDE/skills/think-deep.md          ← think → research → synthesize (for decisions)
 05-CLAUDE/skills/lint-vault.md          ← vault health check + auto-fix
 05-CLAUDE/skills/kickoff.md             ← co-founder planning pass before any new sub-project
+05-CLAUDE/skills/weekly-digest.md      ← weekly content performance report from 04-PUBLISHED/
 ```
 
 Before executing any skill, read the relevant skill file first.
