@@ -48,7 +48,7 @@ From the cleaned content, identify:
 
 ### Step 3: Create an INBOX note
 
-Save as `00-INBOX/YYYY-MM-DD-[source-name]-scrape.md`:
+Save as `00-INBOX/_YYYY-MM-DD-[source-name]-scrape.md`:
 
 ```markdown
 ---
