@@ -1,0 +1,27 @@
+# Credentials
+.env
+credentials/
+*.pem
+*.key
+
+# Obsidian internals
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# macOS
+.DS_Store
+
+# Media (large files — track text only)
+*.heic
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mov
+*.pdf
+
+# Raw data exports
+*.csv
+*.rtf
