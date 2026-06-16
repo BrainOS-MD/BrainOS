@@ -27,6 +27,7 @@ Just text her naturally. She handles:
 | `remind me at 4pm to call the lawyer` | Schedules a phone reminder (natural phrasing — no format needed) |
 | `remind me tomorrow 9am to review the deck` | Same, for tomorrow |
 | `capture: idea for a new product line` | Files it into BrainOS (your knowledge core) |
+| `decision: held the offer at X because Y` | Logs a judgment call to your decision history |
 | `skip gym today` | Removes today's gym block (without penalizing the habit) |
 | `discrete 3h` | Voice briefs go business-only for 3 hours (for when others are around) |
 | `status` | Quick system health check |
