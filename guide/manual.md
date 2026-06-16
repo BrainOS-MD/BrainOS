@@ -1,46 +1,42 @@
-# 📗 LifeOS Full Manual
+# 📗 BrainOS Full Manual
 
-The complete reference: every agent, every command, when and why to use it, how it works under the hood, and how to fix things. For the one-page version, see the [Quickstart](quickstart.md).
+The complete reference: the system, every command, when and why to use it, how it works under the hood, and how to fix things. For the one-page version, see the [Quickstart](quickstart.md).
+
+**The hierarchy:** 🧠 **BrainOS** (the OS / knowledge core + orchestrator) → 📱 **Grace** (interface) → 🌙 **LifeBot** (life) → 💼 **BizBot** (business).
 
 ---
 
 ## Contents
 1. [How it's built](#how-its-built)
-2. [The three engines](#the-three-engines)
-3. [Grace — the interactive layer](#grace)
-4. [Command reference](#command-reference)
-5. [The learning loops](#the-learning-loops)
-6. [Delivery: how things reach you](#delivery)
-7. [The automation schedule](#the-automation-schedule)
-8. [Privacy & safety model](#privacy--safety)
-9. [Troubleshooting](#troubleshooting)
+2. [BrainOS — the OS & knowledge core](#brainos)
+3. [Grace — the interface agent](#grace)
+4. [LifeBot & BizBot — the domain agents](#the-domain-agents)
+5. [Command reference](#command-reference)
+6. [The learning loops](#the-learning-loops)
+7. [Delivery: how things reach you](#delivery)
+8. [The automation schedule](#the-automation-schedule)
+9. [Privacy & safety model](#privacy--safety)
+10. [Troubleshooting](#troubleshooting)
 
 ---
 
 ## How it's built
 
-LifeOS is **plain scripts + scheduled jobs + an LLM**, deliberately boring infrastructure:
+BrainOS is **plain scripts + scheduled jobs + an LLM**, deliberately boring infrastructure:
 
-- **Three project folders**, one per engine, each with a `CLAUDE.md` (its standing instructions), command prompts, and helper scripts.
+- **Project folders**, one per component, each with a `CLAUDE.md` (its standing instructions), command prompts, and helper scripts.
 - **A schema-constants file** in each project is the single source of truth for data layout — nothing hardcodes column letters or IDs elsewhere.
 - **Scheduled jobs** (macOS `launchd`) fire the routines at set times. A deterministic Python layer handles anything that must be reliable (scheduling, calendar, reminders); the LLM handles judgment (drafting, triage, synthesis).
 - **Telegram** is the I/O surface — a user session for silent delivery, a bot (Grace) for interactive notifications.
-- **Google Sheets** hold CRM state; an **Obsidian vault** holds knowledge; **Gmail/Calendar/iMessage/Contacts** are read-only inputs (except drafts, which are written but never sent).
+- **Google Sheets** hold CRM state; an **Obsidian vault** is the BrainOS knowledge core; **Gmail/Calendar/iMessage/Contacts** are read-only inputs (except drafts, which are written but never sent).
 
 No servers, no monthly fees. The trade-off: it runs while your Mac is on.
 
 ---
 
-## The three engines
+## BrainOS
 
-### 🧠 JARVIS — knowledge
-Turns raw input into usable thinking. You drop a note, link, or voice memo; JARVIS sharpens it, files it, finds non-obvious connections to past notes, and when a theme has enough support, drafts content in your voice. It also runs daily research pulses on topics you care about. **Use it when:** you have an idea to capture, a topic to research, or content to produce.
-
-### 💼 BizBot — business
-Your outreach operator. It reads your CRM, ranks who needs attention today, and writes personalized drafts — never generic, always grounded in real context about the person. It tracks which message styles actually get replies and shifts future drafts toward what works. **Use it when:** you're doing outreach, following up, prepping for a call, or want a pipeline read.
-
-### 🌙 LifeBot — life
-Protects your time and relationships. It triages multiple email inboxes, drafts replies into your Drafts folder, manages calendar time-blocks (including wellness), maintains a **personal CRM** of friends and contacts with gentle "you haven't talked to X in a while, here's an opener" nudges, and scrapes newsletters/messages for things worth keeping. **Use it when:** ...you don't. It mostly runs itself and reports each evening.
+The OS and the knowledge core. It turns raw input into usable thinking: you drop a note, link, or voice memo; BrainOS sharpens it, files it, finds non-obvious connections to past notes, and when a theme has enough support, drafts content in your voice. It runs daily research pulses on topics you care about — and, crucially, it hosts the **daily orchestrator** (`morning`) that pulls the whole system together into one ranked dashboard. **Use it when:** you have an idea to capture, a topic to research, content to produce — or just let its morning routine run. Home: an Obsidian vault.
 
 ---
 
@@ -52,31 +48,41 @@ Grace is a Telegram bot — the one part of the system that **notifies** you and
 - **Saved Messages** (silent): briefs, digests, voice notes, scheduled reminders. No buzz.
 - **Grace** (notifies): questions that need your input, urgent alerts, and your commands.
 
-**The feedback loop** is the heart of it. When any engine hits something only you can answer — an empty CRM field, an unclear status, a fact a draft needs — it asks Grace **one discrete question**. You reply to that message. Deterministic answers (yes/no, a date, a status) get written straight into the right place; open-ended answers route to the next run to apply with full context. Capped so you're never spammed (currently 15 questions/day).
+**The feedback loop** is the heart of it. When any component hits something only you can answer — an empty CRM field, an unclear status, a fact a draft needs — it asks Grace **one discrete question**. You reply to that message. Deterministic answers (yes/no, a date, a status) get written straight into the right place; open-ended answers route to the next run to apply with full context. Capped so you're never spammed (currently 15 questions/day).
 
 This is how the system fills its own gaps: instead of hoarding questions for a weekly sit-down, it asks in the moment and learns continuously.
+
+---
+
+## The domain agents
+
+### 🌙 LifeBot — life
+Protects your time and relationships. It triages multiple email inboxes, drafts replies into your Drafts folder, manages calendar time-blocks (including wellness), maintains a **personal CRM** of friends and contacts with gentle "you haven't talked to X in a while, here's an opener" nudges, and scrapes newsletters/messages for things worth keeping. **Use it when:** ...you don't. It mostly runs itself and reports each evening.
+
+### 💼 BizBot — business
+Your outreach operator. It reads your CRM, ranks who needs attention today, and writes personalized drafts — never generic, always grounded in real context about the person. It tracks which message styles actually get replies and shifts future drafts toward what works. **Use it when:** you're doing outreach, following up, prepping for a call, or want a pipeline read.
 
 ---
 
 ## Command reference
 
 ### Daily / automatic (you rarely type these)
-| Command | Engine | What it does | When it runs |
+| Command | Owner | What it does | When it runs |
 |---|---|---|---|
-| `morning` | JARVIS | Inbox + research + CRM scan → one ranked dashboard | 7:45 AM auto |
+| `morning` | BrainOS | Inbox + research + CRM scan → one ranked dashboard | 7:45 AM auto |
 | `evening-brief` | LifeBot | Inbox triage, reply drafts, calendar prep, people nudges | 8:00 PM auto |
 | `day-schedule` | LifeBot | Time-blocks + smart phone reminders | 7:30 AM auto |
 
 ### Weekly
-| Command | Engine | What it does | When |
+| Command | Owner | What it does | When |
 |---|---|---|---|
 | `network-weave` | LifeBot | Intros (double-opt-in), gap-bridges, idea→action | Sunday |
 | `weekly-debrief` | BizBot | ~10 quick questions → updates the playbooks | Monday |
 | `life-debrief` | LifeBot | Silent: learns your voice from sent/edited drafts | Monday |
-| CEO Report | all | One cross-engine picture of the week | Friday |
+| CEO Report | all | One cross-system picture of the week | Friday |
 
 ### On-demand (type when you want them)
-| Command | Engine | Use it when |
+| Command | Owner | Use it when |
 |---|---|---|
 | `meeting-prep [name]` | BizBot | You have a call and want a full brief on them |
 | `enrich-contact [name]` | BizBot | You want deep research on one person |
@@ -87,9 +93,9 @@ This is how the system fills its own gaps: instead of hoarding questions for a w
 | `social-checkin` | LifeBot | Refresh contacts from LinkedIn/Facebook |
 | `wellness` | LifeBot | See your habit & time-block adherence |
 | `crm-seed` | LifeBot | First-run: build the personal CRM from your history |
-| `auto-research [topic]` | JARVIS | Deep-dive a question |
-| `think-deep [question]` | JARVIS | Structured reasoning for a hard decision |
-| `generate-brief` / `write` / `expand` / `optimize` | JARVIS | The content pipeline, stage by stage |
+| `auto-research [topic]` | BrainOS | Deep-dive a question |
+| `think-deep [question]` | BrainOS | Structured reasoning for a hard decision |
+| `generate-brief` / `write` / `expand` / `optimize` | BrainOS | The content pipeline, stage by stage |
 
 ### Grace text commands (natural language)
 `remind me [when] to [thing]` · `capture: [note]` · `skip [block] today` · `discrete [Nh/on/off]` · `status` — plus just replying to her questions.
@@ -100,18 +106,18 @@ This is how the system fills its own gaps: instead of hoarding questions for a w
 
 Three loops make the system improve instead of just repeat:
 
-1. **Outreach playbook** — every draft is tagged; replies are tracked; the win-rate by message style feeds back so the best-performing angle leads next time. Cold patterns get retired.
-2. **Content patterns** — published pieces' engagement updates a "what works" file that shapes future writing. Reply-winning outreach angles also flow here as validated demand signals.
-3. **Voice adaptation** — the system compares the drafts it wrote against what you actually sent. Your edits teach it your real voice, per audience (crisp for business, warm for friends).
+1. **Outreach playbook** (BizBot) — every draft is tagged; replies are tracked; the win-rate by message style feeds back so the best-performing angle leads next time. Cold patterns get retired.
+2. **Content patterns** (BrainOS) — published pieces' engagement updates a "what works" file that shapes future writing. Reply-winning outreach angles also flow here as validated demand signals.
+3. **Voice adaptation** (LifeBot) — the system compares the drafts it wrote against what you actually sent. Your edits teach it your real voice, per audience (crisp for business, warm for friends).
 
-Plus the **block ledger**: it watches which calendar blocks you keep, move, or delete, and adjusts — delete the gym block enough times and it stops scheduling it; consistently move it to 6pm and it adopts 6pm.
+Plus the **block ledger** (LifeBot): it watches which calendar blocks you keep, move, or delete, and adjusts — delete the gym block enough times and it stops scheduling it; consistently move it to 6pm and it adopts 6pm.
 
 ---
 
 ## Delivery
 
 Every brief reaches you three ways so nothing is missed:
-1. **A file** saved to your knowledge vault (searchable archive).
+1. **A file** saved to the BrainOS vault (searchable archive).
 2. **Email** (full content).
 3. **Telegram** — as an **expandable digest** (each section taps open; drafts are full text, ready to copy) plus the file attached.
 
@@ -123,10 +129,10 @@ Daily briefs also get a **voice note** (free, generated on-device) so you can li
 
 ```
 7:25 AM   Mac wakes (so nothing is missed)
-7:30 AM   Day scheduler — audit yesterday's blocks, place today's, schedule reminders
-7:45 AM   Morning dashboard — top actions + pipeline delta
+7:30 AM   Day scheduler (LifeBot) — audit yesterday's blocks, place today's, schedule reminders
+7:45 AM   Morning dashboard (BrainOS) — top actions + pipeline delta
 all day   Reminders fire · Grace listens (15-min command checks + instant replies)
-8:00 PM   Evening brief — triage, drafts, prep, people
+8:00 PM   Evening brief (LifeBot) — triage, drafts, prep, people
 Sunday    Network weave
 Monday    Weekly debrief (you) + life debrief (silent)
 Friday    CEO report
